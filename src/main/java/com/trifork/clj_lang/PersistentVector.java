@@ -835,6 +835,16 @@ static final class TransientVector<T> extends AFn implements ITransientVector<T>
 	}
 	
 }
+
+	@Override
+	public com.trifork.clj_ds.PersistentVector<T> consAll(Iterable<? extends T> others) {
+		TransientVector<T> result = this.asTransient();
+		for (T other : others) {
+			result = result.conj(other);
+		}
+		return (com.trifork.clj_ds.PersistentVector<T>) result.persistent();
+	}
+
 /*
 static public void main(String[] args){
 	if(args.length != 3)

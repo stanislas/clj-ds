@@ -117,13 +117,13 @@ public Iterator<T> iterator(){
 }
 
 
-public IPersistentSet<T> disjoin(T key) {
+public PersistentHashSet<T> disjoin(T key) {
 	if(contains(key))
 		return new PersistentHashSet<T>(meta(),impl.without(key));
 	return this;
 }
 
-public IPersistentSet<T> cons(T o){
+public PersistentHashSet<T> cons(T o){
 	if(contains(o))
 		return this;
 	return new PersistentHashSet<T>(meta(),impl.assoc(o,o));
@@ -154,5 +154,23 @@ static final class TransientHashSet<T> extends ATransientSet<T> {
 		return new PersistentHashSet<T>(null, impl.persistentMap());
 	}
 }
+
+	@Override
+	public PersistentSet<T> consAll(Iterable<? extends T> others) {
+		TransientHashSet<T> result = (TransientHashSet<T>) this.asTransient();
+		for (T other : others) {
+			result = (TransientHashSet<T>) result.conj(other);
+		}
+		return (PersistentSet<T>) result.persistent();
+	}
+
+	@Override
+	public PersistentSet<T> disjoinAll(Iterable<? extends T> others) {
+		TransientHashSet<T> result = (TransientHashSet<T>) this.asTransient();
+		for (T other : others) {
+			result = (TransientHashSet<T>) result.disjoin(other);
+		}
+		return (PersistentSet<T>) result.persistent();
+	}
 
 }
