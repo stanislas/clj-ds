@@ -14,13 +14,11 @@ package com.trifork.clj_lang;
 
 import java.io.Serializable;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Stack;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveTask;
 import java.util.concurrent.atomic.AtomicReference;
-
-import jsr166y.ForkJoinPool;
-import jsr166y.RecursiveTask;
 
 public class PersistentVector<T> extends APersistentVector<T> implements IObj, IEditableCollection<T>, com.trifork.clj_ds.PersistentVector<T>{
 

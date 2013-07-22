@@ -86,7 +86,7 @@ public class PersistentVectorTest {
 	/**
 	 *  * NB: this methods takes a long time to run. Be patient.
 	 */
-	
+
 	public static void main(String[] args) {
 		AFn mapfn = new AFn() {
 			@Override
