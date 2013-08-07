@@ -3,7 +3,7 @@
     <groupId>com.github.krukow</groupId>
     <artifactId>clj-ds</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.3.1-ergon</version>
+    <version>0.0.3.2-ergon</version>
     <name>clj-ds</name>
     <url>http://github.com/krukow/clj-ds</url>
     <description>
